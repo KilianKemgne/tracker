@@ -17,7 +17,9 @@ router.get('/fleet', ctrlFleet.fleet)
 router.post("/saveGpsdata", crtlGpsdata.saveGpsdata)
 router.get("/getGpsdata", crtlGpsdata.getGpsdata)
 
-router.get('/', () => console.log("bonjour"))
+router.get('/', (req, res) => {
+    res.send('Hi! Welcome to polytracker project!')
+  })
 module.exports = router;
 
 
