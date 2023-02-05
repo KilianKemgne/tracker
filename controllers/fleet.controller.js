@@ -22,3 +22,5 @@ module.exports.fleet = (req, res, next) => {
         .then(fleets => res.status(200).json(fleets))
     .catch(error => res.status(400).json({ error }));
 }
+
+

@@ -3,15 +3,15 @@ const mongoose = require("mongoose");
 
 
 const carSchema = new mongoose.Schema({
-    immatriculation : {
+    matriculation : {
         type: String,
         required: true
     },
-    marque : {
+    brand : {
         type: String,
         required: false
     },
-    fleetId:{
+    fleet:{
         type: mongoose.Schema.Types.ObjectId,
         ref: "fleet"
     },

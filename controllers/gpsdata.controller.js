@@ -5,17 +5,17 @@ const _ = require('lodash');
 const gpsdata = require('../models/gpsdata')
 
 module.exports.saveGpsdata = (req,res) => {
-    const {latitude, longitude, vitesse} = req.body;
+    const {latitude, longitude, vitesse, updatedate, altitude, cardId} = req.body;
     let errors = [];
   
-    if(!latitude || !longitude || !vitesse){
+    if(!latitude || !longitude || !vitesse || !cardId){
       errors.push({msg : "Parameters are missing"});
     }
     if(errors.length>0){
       res.json({Message : errors})
     }else{
       const newgpsdata = new gpsdata({
-        latitude, longitude, vitesse
+        latitude, longitude, vitesse, updatedate, altitude, cardId
       });
   
       newgpsdata
@@ -28,10 +28,9 @@ module.exports.saveGpsdata = (req,res) => {
 }
 
 module.exports.getGpsdata = (req,res) =>{
-    gpsdata.findOne({carId: req.params.carId}).exec((err, gpsdata)=>{
-        if (!gpsdata)
-            return res.status(404).json({ status: false, message: 'Gpsdata record not found.' });
-        else
-            return res.status(200).json(gpsdata);
+    var carId = req.params.carId;  
+    gpsdata.find({carId: carId}).exec((err, notenumber)=>{
+      console.log(notenumber);
+      res.json(notenumber);
     });
   }

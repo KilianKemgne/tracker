@@ -12,6 +12,19 @@ const gpsdataSchema = new mongoose.Schema({
     vitesse: {
         type: String,
         required: true
+    },
+    updatedate: {
+        type: Date,
+        default: Date.now(),
+        required: false
+    },
+    altitude: {
+        type: String,
+        required: false
+    },
+    carId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "car"
     }
 });
 
