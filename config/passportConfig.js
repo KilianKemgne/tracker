@@ -11,7 +11,7 @@ passport.use(
                 (err, user) => {
                     if (err)
                         return done(err);
-                    // unknown user
+                    // unknown user 
                     else if (!user)
                         return done(null, false, { message: 'Email is not registered' });
                     // wrong password
